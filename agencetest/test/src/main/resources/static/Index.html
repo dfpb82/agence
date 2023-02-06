@@ -33,11 +33,6 @@
                     <div class="form-group">
                       <label for="FormControlSelect1">Seleccione consultor:</label>
                       <select class="form-control" id="FormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
                       </select>
                       </div>
                 </div>
@@ -79,5 +74,29 @@
         </div>
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+    
+    
     </body>
 </html>
+
+<script>
+    var url = 'http://localhost:8080/consultores/listar';
+      
+    fetch(url).then(function(result){
+
+        if(result.ok){
+            return result.json();
+        }
+    }).then(function(data){
+        data.forEach(function(element){
+            let FormControlSelect1= document.getElementById("FormControlSelect1");
+            let opt =document.createElement("option");
+            opt.appendChild(document.createTextNode(element.no_usuario));
+            opt.value=element.no_usuario;
+
+            FormControlSelect1.appendChild(opt);
+        })
+    })
+         
+  </script>
